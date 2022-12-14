@@ -1,6 +1,5 @@
-# React-Breadcrumbs
+## React-Breadcrumbs
 --------
-
 ## Link to site
 (https://r97draco.github.io/react-breadcrumbs/)
 
