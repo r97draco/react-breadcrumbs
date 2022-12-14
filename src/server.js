@@ -95,12 +95,19 @@ var directoryContent = [];
 const iterateContents = (obj, directoryName) => {
   Object.keys(obj).forEach(key => {
   if (typeof obj[key] === 'object' && obj[key] !== null) {
-    // getting list of directories for initial breadcrumb
     if (key === directoryName){
       console.log("OKOOOKKOK")
+      console.log("key",obj[key].type)
       console.log(obj[key].children)
-      directoryContent.push(obj[key].children)
-      return
+      if(obj[key].type == 'file'){
+        directoryContent.push({type: "This is a File:"+directoryName});
+      }else{
+      // if(obj[key].children == undefined){
+      //   directoryContent.push("This is a File:"+directoryName);
+      // }else{  
+        directoryContent.push(obj[key].children)
+      }
+      return;
     }
       iterateContents(obj[key], directoryName)
       }

@@ -12,16 +12,17 @@ export default function BoxComponent(props) {
     return (
       <ul>
         {props.content.map(item => {
-        return (item.indexOf('.txt') <= 0 && item.indexOf('file') <=0)?
+        return (item !== 'type' )?
+        // return (item.indexOf('.txt') <= 0 && item.indexOf('file') <=0)?
         <ListItem>
           <InsertLinkIcon/>
-         <Link key={item} onClick={()=> props.selected(item)}>{item}</Link>
+         <Link key={item} onClick={()=> props.dir(item)}>{item}</Link>
         </ListItem>
         :
         <ListItem> 
           <ArticleIcon/>
-          {"This is a File--->  "} 
-          <Link sx={{color:"yellow"}} key={item} >{item}</Link>
+          {"This is a File"} 
+          <Link sx={{color:"yellow"}} onClick={()=> props.fil(item)} key={item} ></Link>
         </ListItem>
         ;
       })}

@@ -22,9 +22,17 @@ function App() {
   const getDirectoryContent = async (dirName) => {
     const res = await axios.get('http://127.0.0.1:8080/get_contents?directory='+dirName);
     let arr = [];
+    if(res.data == null || res.data == undefined){
+      arr.push("No Content");
+    }
+    // else if (res.data.length === 0 || res.data[0].type === 'file'){
+    //   arr.push("File Name is: "+dirName);
+    // }
+    else{
     res.data.forEach(element => {
       arr.push(...Object.keys(element))
     });
+    }
     setDirContent(arr);
    };
 
@@ -46,9 +54,16 @@ function App() {
   }
 
   //Modify the directory content and breadcrumbs to when a directory is clicked
-  const clickme = crumb => {
+  var i= crumbs.length-1;
+  const showdir = crumb => {
     getDirectoryContent(crumb)
     crumbs.push(crumb);
+  }
+
+  const showfile = crumb => {
+    getDirectoryContent(crumb)
+    crumbs.push(crumb);
+    // return <p>{"This is a File: "}{crumb}</p>
   }
   // ---- Methods End --- //
 
@@ -57,7 +72,7 @@ function App() {
       <Navbar data={"Breadcrumbs Demo"}/>
       <header className="App-header">
         <BasicBreadcrumbs crumbs={crumbs} selected={selected}/>
-        <BoxComponent content={dirContent}  selected={clickme}/>
+        <BoxComponent content={dirContent}  dir={showdir}  fil={showfile}/>
       </header>
     </div>
   );
