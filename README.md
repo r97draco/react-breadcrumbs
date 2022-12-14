@@ -1,8 +1,8 @@
 # React-Breadcrumbs
-Python application for library management using SQLite3 database.
+--------
 
 ## Link to site
-(https://r97draco.github.io/)
+(https://r97draco.github.io/react-breadcrumbs/)
 
 ## How to start
 1. Clone or download the project.
